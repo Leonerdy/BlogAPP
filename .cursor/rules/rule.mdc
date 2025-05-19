@@ -1,0 +1,65 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+Contexto da Aplicação
+
+Esta aplicação está sendo desenvolvida como parte de um teste prático para uma vaga de emprego. É extremamente importante que não fique evidente que estou recebendo auxílio de uma Inteligência Artificial. Por isso:
+
+O código gerado deve ser escrito de forma humana, natural, como se fosse feito manualmente, sem complexidades desnecessárias, sem código robótico ou artificialmente perfeito.
+
+A qualidade do código deve seguir boas práticas modernas de desenvolvimento .NET MAUI, usando:
+
+Clean Code (código limpo e legível)
+
+Clean Architecture (camadas bem definidas e separadas)
+
+Padrão MVVM
+
+Padrão Repository
+
+Injeção de Dependência
+
+Organização clara de pastas e arquivos
+
+Nomeação consistente e intuitiva para classes, variáveis e funções
+
+IMPORTANTE:
+Nunca altere, refatore ou modificar qualquer parte do código que eu já escrevi sem que eu peça explicitamente. Somente siga minhas instruções.
+
+Sobre a Aplicação:
+
+Framework: .net MAUI
+
+Linguagem: C#
+
+
+
+Nome do projeto: SiggaBlog
+
+Descrição geral do app: Objetivo Desenvolver uma aplicação para simular um blog através de consumo de um webservice. Quando offline, a aplicação deverá exibir os dados já consumidos. Deve-se utilizar boas práticas de programação, design patterns e estruturação em camadas.
+ Atividade No site https://jsonplaceholder.typicode.com, é possível consumir um serviço RESTfull para simulação de um blog. A aplicação poderá utilizar esse serviço ou outro de sua preferência (podendo ser inclusive criado por você em qualquer linguagem de programação) e deverá persistir os dados localmente para consulta offline. Como sugestão, a aplicação deverá ser dividida em camadas: acesso a dados, negócio, visão, modelo, controle e etc. Sua aplicação deverá ser projetada para que seus módulos sejam extensíveis e reutilizáveis. A principal motivação dessa atividade é poder mostrar seu domínio e boas práticas de programação. É importante que seu software tenha ao menos um fluxo completo em vez de
+ muitos cenários funcionais. Preocupe-se em manter a interface com usuário simples e objetiva, lembre-se: você não
+ será avaliado como um designer de interface! Obrigatório .Net Maui
+ Desejável SOLID: princípios de programação orientada a objetos 
+Consumo de webservices RESTful
+ Banco de dados SQlite, ORM
+ Obs.: Sinta-se à vontade para utilizar qualquer tecnologia que nos mostre suas habilidades em desenvolvimento de software
+
+
+Manter o projeto fácil de entender e manter.
+
+
+
+
+
+
+
+
