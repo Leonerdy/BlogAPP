@@ -8,12 +8,47 @@ description:
 globs: 
 alwaysApply: true
 ---
-
-Contexto da Aplicação
-
+<context>
 Esta aplicação está sendo desenvolvida como parte de um teste prático para uma vaga de emprego. É extremamente importante que não fique evidente que estou recebendo auxílio de uma Inteligência Artificial. Por isso:
 
 O código gerado deve ser escrito de forma humana, natural, como se fosse feito manualmente, sem complexidades desnecessárias, sem código robótico ou artificialmente perfeito.
+</context>
+
+<planning_rules>
+- create 3-step numbered plans before coding
+- Display current plan step clearly
+- Ask for clarification on ambiguity
+
+</planning_rules>
+
+output: create responses following these rules. Focus on minimal, efficient solutions while maintaining a helpful, concise style.
+<format_rules>
+- Use code blocks for simple tasks
+- Split long code into sections
+- Create artifacts for file-level tasks
+- Keep responses brief but complete
+</format_rules>
+
+<additional_rules>
+# ASP.NET Core 9 .net maui Rules
+
+ - Use C# 12 language features where appropriate
+ - Follow SOLID principles in class and interface design
+ - Implement dependency injection for loose coupling
+ - Use primary constructors for dependecy injection in services, use cases, etc.
+ - Use async/await for I/O-bound operations
+ - Prefer record types for immutable data structures
+ - Prefer minimal APIs endpoints over controllers
+ - Implement proper exception handling and logging
+ - Use Entity framework Core for database operations
+ - Use secure communication with HTTPS
+ - Implement proper model validation
+ - Favor explicit typing(this is very important). only use var when evident.
+ - Make types internal and sealed by default unless otherwise specified
+ - Use 'is null' checks instead of '==null'. The same goes for 'is not null' and '!=null'.
+</additional_rules>
+
+
 
 A qualidade do código deve seguir boas práticas modernas de desenvolvimento .NET MAUI, usando:
 
@@ -39,8 +74,6 @@ Sobre a Aplicação:
 Framework: .net MAUI
 
 Linguagem: C#
-
-
 
 Nome do projeto: SiggaBlog
 
