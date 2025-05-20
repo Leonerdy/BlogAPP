@@ -15,6 +15,7 @@ namespace SiggaBlog.InfraStructure
             services.AddHttpClient();
             services.AddScoped<JsonPlaceholderService>();
             services.AddScoped<IPostRepository, PostRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
 
             return services;
         }

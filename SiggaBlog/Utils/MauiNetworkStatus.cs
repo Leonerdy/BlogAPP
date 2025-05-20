@@ -1,12 +1,15 @@
+using Microsoft.Maui.Networking;
 using SiggaBlog.Domain.Interfaces;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace SiggaBlog.Utils
 {
-    public class MauiNetworkStatus : INetworkStatus, INotifyPropertyChanged
+    public class MauiNetworkStatus : INetworkStatus, INotifyPropertyChanged, IDisposable
     {
         private readonly IConnectivity _connectivity;
         private bool _isOnline;
+        private bool _disposed;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -27,7 +30,8 @@ namespace SiggaBlog.Utils
                 if (_isOnline != value)
                 {
                     _isOnline = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsOnline)));
+                    OnPropertyChanged();
+                    System.Diagnostics.Debug.WriteLine($"Network status changed to: {value}");
                 }
             }
         }
@@ -47,6 +51,36 @@ namespace SiggaBlog.Utils
                    profiles.Any(p => p == ConnectionProfile.WiFi || 
                                    p == ConnectionProfile.Cellular || 
                                    p == ConnectionProfile.Ethernet);
+        }
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    // Remove o handler do evento
+                    _connectivity.ConnectivityChanged -= Connectivity_ConnectivityChanged;
+                }
+
+                _disposed = true;
+            }
+        }
+
+        ~MauiNetworkStatus()
+        {
+            Dispose(false);
         }
     }
 } 

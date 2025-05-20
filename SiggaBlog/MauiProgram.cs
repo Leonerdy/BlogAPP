@@ -8,14 +8,15 @@ using SiggaBlog.Utils;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
-using System;
 using SiggaBlog.InfraStructure.Persistence;
 using CommunityToolkit.Maui;
+using SiggaBlog.Application.UseCases.Comments;
 
 namespace SiggaBlog;
 
 public static class MauiProgram
 {
+
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
@@ -46,9 +47,12 @@ public static class MauiProgram
 
         builder.Services.AddInfrastructure(options);
 
-		builder.Services.AddScoped<GetAllPostsUseCase>();
+		builder.Services.AddScoped<IGetAllPostsUseCase, GetAllPostsUseCase>();
+		builder.Services.AddScoped<IGetCommentsByPostIdUseCase, GetCommentsByPostIdUseCase>();
 		builder.Services.AddScoped<MainPageViewModel>();
+		builder.Services.AddScoped<PostDetailViewModel>();
 		builder.Services.AddTransient<MainPage>();
+		builder.Services.AddTransient<PostDetailPage>();
 		builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);
 		builder.Services.AddSingleton<INetworkStatus, MauiNetworkStatus>();
 

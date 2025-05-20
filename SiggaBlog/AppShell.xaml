@@ -3,13 +3,17 @@
     x:Class="SiggaBlog.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:SiggaBlog.Views"
-    Shell.FlyoutBehavior="Flyout"
-    Title="SiggaBlog">
+    xmlns:views="clr-namespace:SiggaBlog.Views"
+    Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
+        Title="Posts"
+        ContentTemplate="{DataTemplate views:MainPage}"
         Route="MainPage" />
+
+    <ShellContent
+        Title="Post Detail"
+        ContentTemplate="{DataTemplate views:PostDetailPage}"
+        Route="PostDetail" />
 
 </Shell>

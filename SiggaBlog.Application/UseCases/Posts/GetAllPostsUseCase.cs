@@ -3,7 +3,7 @@ using SiggaBlog.Domain.Interfaces;
 
 namespace SiggaBlog.Application.UseCases.Posts
 {
-    public class GetAllPostsUseCase
+    public class GetAllPostsUseCase : IGetAllPostsUseCase
     {
         private readonly IPostRepository _postRepository;
 

@@ -3,12 +3,14 @@ using CommunityToolkit.Mvvm.Input;
 using SiggaBlog.Application.UseCases.Posts;
 using SiggaBlog.Domain.Entities;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using SiggaBlog.Views;
 
 namespace SiggaBlog.ViewModels
 {
     public partial class MainPageViewModel : BaseViewModel
     {
-        private readonly GetAllPostsUseCase _getAllPostsUseCase;
+        private readonly IGetAllPostsUseCase _getAllPostsUseCase;
 
         [ObservableProperty]
         private ObservableCollection<Post> posts;
@@ -16,7 +18,7 @@ namespace SiggaBlog.ViewModels
         [ObservableProperty]
         private bool isRefreshing;
 
-        public MainPageViewModel(GetAllPostsUseCase getAllPostsUseCase)
+        public MainPageViewModel(IGetAllPostsUseCase getAllPostsUseCase)
         {
             _getAllPostsUseCase = getAllPostsUseCase;
             Posts = new ObservableCollection<Post>();
@@ -62,6 +64,19 @@ namespace SiggaBlog.ViewModels
         {
             IsRefreshing = true;
             await LoadPostsAsync();
+        }
+
+        [RelayCommand]
+        private async Task SelectPostAsync(Post post)
+        {
+            if (post is null) return;
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                { "Post", post }
+            };
+
+            await Shell.Current.GoToAsync(nameof(PostDetailPage), navigationParameter);
         }
     }
 }
