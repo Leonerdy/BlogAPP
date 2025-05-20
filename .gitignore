@@ -482,3 +482,132 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# Cursor rules
+.cursor/
+.cursor-rules/
+*.mdc
+rule.mdc
+.cursor-settings.json
+.cursor-cache/
+
+# .NET MAUI / Xamarin
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.dbmdl
+*.jfm
+.vs/
+.vscode/
+*.swp
+*.*~
+project.lock.json
+.DS_Store
+*.pyc
+nupkg/
+
+# Visual Studio files
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Rider
+.idea/
+*.sln.iml
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VS Code directories
+.vscode/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VS Code directories
+.vscode/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
