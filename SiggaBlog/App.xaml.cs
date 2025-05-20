@@ -1,6 +1,8 @@
-﻿namespace SiggaBlog
+﻿using MAUI = Microsoft.Maui.Controls;
+
+namespace SiggaBlog
 {
-    public partial class App : Application
+    public partial class App : MAUI.Application
     {
         public App()
         {
