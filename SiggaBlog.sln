@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35818.85 d17.13
+VisualStudioVersion = 17.13.35818.85
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiggaBlog", "SiggaBlog\SiggaBlog.csproj", "{58CC72AE-1531-4AD9-88E0-615BC251F810}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiggaBlog.Presentation", "SiggaBlog\SiggaBlog.Presentation.csproj", "{58CC72AE-1531-4AD9-88E0-615BC251F810}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiggaBlog.Domain", "SiggaBlog.Domain\SiggaBlog.Domain.csproj", "{F8F715B7-45A9-4E27-802B-62C3B87FD510}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiggaBlog.Application", "SiggaBlog.Application\SiggaBlog.Application.csproj", "{1B6DDED7-5C16-4829-9097-9E508F64FAF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiggaBlog.InfraStructure", "SiggaBlog.InfraStructure\SiggaBlog.InfraStructure.csproj", "{F90F857D-7D6D-469D-B284-A0247EBC3F15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{58CC72AE-1531-4AD9-88E0-615BC251F810}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58CC72AE-1531-4AD9-88E0-615BC251F810}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58CC72AE-1531-4AD9-88E0-615BC251F810}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8F715B7-45A9-4E27-802B-62C3B87FD510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8F715B7-45A9-4E27-802B-62C3B87FD510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8F715B7-45A9-4E27-802B-62C3B87FD510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8F715B7-45A9-4E27-802B-62C3B87FD510}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B6DDED7-5C16-4829-9097-9E508F64FAF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B6DDED7-5C16-4829-9097-9E508F64FAF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B6DDED7-5C16-4829-9097-9E508F64FAF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B6DDED7-5C16-4829-9097-9E508F64FAF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F90F857D-7D6D-469D-B284-A0247EBC3F15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F90F857D-7D6D-469D-B284-A0247EBC3F15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F90F857D-7D6D-469D-B284-A0247EBC3F15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F90F857D-7D6D-469D-B284-A0247EBC3F15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
