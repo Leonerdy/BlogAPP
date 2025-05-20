@@ -10,18 +10,24 @@ namespace SiggaBlog.InfraStructure
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, string dbPath)
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-            services.AddDbContext<SiggaBlogDbContext>(options =>
-            {
-                options.UseSqlite($"Data Source={dbPath}");
-            });
-
             services.AddHttpClient();
             services.AddScoped<JsonPlaceholderService>();
             services.AddScoped<IPostRepository, PostRepository>();
 
             return services;
+        }
+
+        public static IServiceCollection AddInfrastructure(
+            this IServiceCollection services, 
+            DbContextOptions options)
+        {
+            return services
+                .AddInfrastructure()
+                .AddSingleton(
+                    new SiggaBlogDbContext(
+                        (DbContextOptions<SiggaBlogDbContext>)options));
         }
     }
 }
