@@ -27,8 +27,8 @@ namespace SiggaBlog.Tests.Application.Usecases.Posts
             // Arrange
             var expectedPosts = new List<Post>
             {
-                new Post(1, "Test Post 1", "Body 1"),
-                new Post(2, "Test Post 2", "Body 2")
+                new Post { Id = 1, UserId = 1, Title = "Test Post 1", Body = "Body 1" },
+                new Post { Id = 2, UserId = 1, Title = "Test Post 2", Body = "Body 2" }
             };
 
             _postRepositoryMock

@@ -68,8 +68,8 @@ namespace SiggaBlog.Tests.Integration.UseCases.Posts
             // Add some posts to local database
             var localPosts = new[]
             {
-                new Post(1, "Local Post 1", "Body 1"),
-                new Post(2, "Local Post 2", "Body 2")
+                new Post { Id = 1, UserId = 1, Title = "Local Post 1", Body = "Body 1" },
+                new Post { Id = 2, UserId = 1, Title = "Local Post 2", Body = "Body 2" }
             };
 
             await _dbContext.Posts.AddRangeAsync(localPosts);
@@ -91,8 +91,8 @@ namespace SiggaBlog.Tests.Integration.UseCases.Posts
             // Arrange
             var localPosts = new[]
             {
-                new Post(1, "Local Post 1", "Body 1"),
-                new Post(2, "Local Post 2", "Body 2")
+                new Post { Id = 1, UserId = 1, Title = "Local Post 1", Body = "Body 1" },
+                new Post { Id = 2, UserId = 1, Title = "Local Post 2", Body = "Body 2" }
             };
 
             await _dbContext.Posts.AddRangeAsync(localPosts);
