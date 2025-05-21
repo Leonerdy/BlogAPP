@@ -486,10 +486,15 @@ $RECYCLE.BIN/
 # Cursor rules
 .cursor/
 .cursor-rules/
+.cursor/
+.cursor-rules/
 *.mdc
 rule.mdc
 .cursor-settings.json
 .cursor-cache/
+.cursor/rules/
+.cursor/rules/*
+.cursor-rules/*
 
 # .NET MAUI / Xamarin
 *.user
