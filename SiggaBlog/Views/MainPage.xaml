@@ -14,7 +14,7 @@
             Margin="0,0,0,10"
             FontAttributes="Bold"
             FontSize="24"
-            Text="Posts"
+            Text="Postagens"
             TextColor="#212121" />
 
         <RefreshView
@@ -73,37 +73,35 @@
         <Button
             Grid.Row="1"
             Margin="0,0,20,20"
+            BackgroundColor="#2196F3"
             Command="{Binding ShowCreatePostModalCommand}"
+            CornerRadius="30"
+            FontSize="24"
             HeightRequest="60"
             HorizontalOptions="End"
             Text="+"
-            VerticalOptions="End"
-            WidthRequest="60"
-            FontSize="24"
-            BackgroundColor="#2196F3"
             TextColor="White"
-            CornerRadius="30" />
+            VerticalOptions="End"
+            WidthRequest="60" />
 
         <Frame
             Grid.Row="1"
-            IsVisible="{Binding IsCreatePostModalVisible}"
+            Margin="20"
+            Padding="20"
             BackgroundColor="White"
             CornerRadius="10"
-            Padding="20"
-            Margin="20"
-            VerticalOptions="Center"
             HorizontalOptions="Center"
+            IsVisible="{Binding IsCreatePostModalVisible}"
+            VerticalOptions="Center"
             WidthRequest="300">
             <StackLayout Spacing="15">
                 <Label
-                    FontSize="20"
                     FontAttributes="Bold"
-                    Text="Criar Novo Post"
-                    HorizontalOptions="Center" />
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    Text="Criar Novo Post" />
 
-                <Entry
-                    Placeholder="Título"
-                    Text="{Binding NewPostTitle}" />
+                <Entry Placeholder="Título" Text="{Binding NewPostTitle}" />
 
                 <Editor
                     HeightRequest="100"
@@ -113,15 +111,15 @@
                 <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
                     <Button
                         Grid.Column="0"
+                        BackgroundColor="#9E9E9E"
                         Command="{Binding CancelCreatePostCommand}"
-                        Text="Cancelar"
-                        BackgroundColor="#9E9E9E" />
+                        Text="Cancelar" />
 
                     <Button
                         Grid.Column="1"
+                        BackgroundColor="#2196F3"
                         Command="{Binding CreatePostCommand}"
-                        Text="Criar"
-                        BackgroundColor="#2196F3" />
+                        Text="Criar" />
                 </Grid>
             </StackLayout>
         </Frame>

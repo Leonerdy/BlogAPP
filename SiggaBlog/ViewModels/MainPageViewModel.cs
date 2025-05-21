@@ -37,7 +37,7 @@ namespace SiggaBlog.ViewModels
             _getAllPostsUseCase = getAllPostsUseCase;
             _mediator = mediator;
             Posts = new ObservableCollection<Post>();
-            Title = "Posts";
+            Title = "Todas as postagens";
         }
 
         [RelayCommand]
