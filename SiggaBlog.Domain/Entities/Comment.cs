@@ -8,4 +8,4 @@ namespace SiggaBlog.Domain.Entities
         public string Email { get; set; } = string.Empty;
         public string Body { get; set; } = string.Empty;
     }
-} 
+}

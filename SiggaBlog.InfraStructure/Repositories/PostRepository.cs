@@ -24,7 +24,7 @@ namespace SiggaBlog.InfraStructure.Repositories
 
         public async Task<IEnumerable<Post>> GetAllAsync()
         {
-            if (!_networkStatus.IsOnline)
+            if (!_networkStatus.HasInternetConnection())
             {
                 return await GetLocalPostsAsync();
             }
@@ -36,7 +36,6 @@ namespace SiggaBlog.InfraStructure.Repositories
                 return remotePosts;
             }
 
-            
             return await GetLocalPostsAsync();
         }
 
@@ -61,21 +60,21 @@ namespace SiggaBlog.InfraStructure.Repositories
                 .ToListAsync();
         }
 
-        private async Task UpdateLocalDatabaseAsync(IEnumerable<Post> posts)
+        private async Task UpdateLocalDatabaseAsync(IEnumerable<Post> remotePosts)
         {
             try
             {
-                // Garante que o banco e a tabela existem
                 await _dbContext.Database.EnsureCreatedAsync();
 
-                // Limpa a tabela se existir
-                if (await _dbContext.Posts.AnyAsync())
+                foreach (var post in remotePosts)
                 {
-                    await _dbContext.Posts.ExecuteDeleteAsync();
+                    bool exists = await _dbContext.Posts.AnyAsync(p => p.Id == post.Id);
+                    if (!exists)
+                    {
+                        await _dbContext.Posts.AddAsync(post);
+                    }
                 }
 
-                // Adiciona os novos posts
-                await _dbContext.Posts.AddRangeAsync(posts);
                 await _dbContext.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -85,7 +84,6 @@ namespace SiggaBlog.InfraStructure.Repositories
                 {
                     System.Diagnostics.Debug.WriteLine($"Inner exception: {ex.InnerException.Message}");
                 }
-                // Não relançamos a exceção para manter a consistência do repositório
             }
         }
     }

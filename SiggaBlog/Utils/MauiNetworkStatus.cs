@@ -1,86 +1,11 @@
-using Microsoft.Maui.Networking;
 using SiggaBlog.Domain.Interfaces;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
 namespace SiggaBlog.Utils
 {
-    public class MauiNetworkStatus : INetworkStatus, INotifyPropertyChanged, IDisposable
+    public class MauiNetworkStatus : INetworkStatus
     {
-        private readonly IConnectivity _connectivity;
-        private bool _isOnline;
-        private bool _disposed;
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public MauiNetworkStatus(IConnectivity connectivity)
+        public bool HasInternetConnection()
         {
-            _connectivity = connectivity;
-            _isOnline = CheckConnectivity();
-            
-            // Registra o evento de mudança de conectividade
-            _connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
-        }
-
-        public bool IsOnline
-        {
-            get => _isOnline;
-            private set
-            {
-                if (_isOnline != value)
-                {
-                    _isOnline = value;
-                    OnPropertyChanged();
-                    System.Diagnostics.Debug.WriteLine($"Network status changed to: {value}");
-                }
-            }
-        }
-
-        private void Connectivity_ConnectivityChanged(object? sender, ConnectivityChangedEventArgs e)
-        {
-            IsOnline = CheckConnectivity();
-        }
-
-        private bool CheckConnectivity()
-        {
-            var currentAccess = _connectivity.NetworkAccess;
-            var profiles = _connectivity.ConnectionProfiles;
-
-            // Verifica se tem acesso à internet e se tem algum perfil de conexão ativo
-            return currentAccess == NetworkAccess.Internet && 
-                   profiles.Any(p => p == ConnectionProfile.WiFi || 
-                                   p == ConnectionProfile.Cellular || 
-                                   p == ConnectionProfile.Ethernet);
-        }
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!_disposed)
-            {
-                if (disposing)
-                {
-                    // Remove o handler do evento
-                    _connectivity.ConnectivityChanged -= Connectivity_ConnectivityChanged;
-                }
-
-                _disposed = true;
-            }
-        }
-
-        ~MauiNetworkStatus()
-        {
-            Dispose(false);
+            return Connectivity.Current.NetworkAccess == NetworkAccess.Internet;
         }
     }
-} 
+}

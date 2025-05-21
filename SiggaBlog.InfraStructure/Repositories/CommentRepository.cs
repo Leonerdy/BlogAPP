@@ -24,7 +24,7 @@ namespace SiggaBlog.InfraStructure.Repositories
 
         public async Task<IEnumerable<Comment>> GetByPostIdAsync(int postId)
         {
-            if (!_networkStatus.IsOnline)
+            if (!_networkStatus.HasInternetConnection())
             {
                 return await GetLocalCommentsAsync(postId);
             }
@@ -61,26 +61,21 @@ namespace SiggaBlog.InfraStructure.Repositories
                 .ToListAsync();
         }
 
-        private async Task UpdateLocalDatabaseAsync(IEnumerable<Comment> comments)
+        private async Task UpdateLocalDatabaseAsync(IEnumerable<Comment> remoteComments)
         {
             try
             {
                 await _dbContext.Database.EnsureCreatedAsync();
 
-                var postId = comments.FirstOrDefault()?.PostId ?? 0;
-                if (postId > 0)
+                foreach (var comment in remoteComments)
                 {
-                    var existingComments = await _dbContext.Comments
-                        .Where(c => c.PostId == postId)
-                        .ToListAsync();
-
-                    if (existingComments.Any())
+                    bool exists = await _dbContext.Comments.AnyAsync(c => c.Id == comment.Id);
+                    if (!exists)
                     {
-                        _dbContext.Comments.RemoveRange(existingComments);
+                        await _dbContext.Comments.AddAsync(comment);
                     }
                 }
 
-                await _dbContext.Comments.AddRangeAsync(comments);
                 await _dbContext.SaveChangesAsync();
             }
             catch (Exception ex)
