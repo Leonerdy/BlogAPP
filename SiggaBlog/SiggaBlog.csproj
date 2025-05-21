@@ -73,7 +73,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\SiggaBlog.Application\SiggaBlog.Application.csproj" />
-	  <ProjectReference Include="..\SiggaBlog.Domain\SiggaBlog.Domain.csproj" />
 	  <ProjectReference Include="..\SiggaBlog.InfraStructure\SiggaBlog.InfraStructure.csproj" />
 	</ItemGroup>
 

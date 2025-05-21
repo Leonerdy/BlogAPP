@@ -56,7 +56,6 @@ namespace SiggaBlog.InfraStructure.Repositories
         {
             return await _dbContext.Posts
                 .AsNoTracking()
-                .OrderByDescending(p => p.Id)
                 .ToListAsync();
         }
 

@@ -57,7 +57,6 @@ namespace SiggaBlog.InfraStructure.Repositories
             return await _dbContext.Comments
                 .AsNoTracking()
                 .Where(c => c.PostId == postId)
-                .OrderByDescending(c => c.Id)
                 .ToListAsync();
         }
 
