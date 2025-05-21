@@ -19,23 +19,27 @@ SiggaBlog é um aplicativo móvel multi-camâdas desenvolvido em .NET MAUI que p
 O projeto segue a Clean Architecture e é dividido em camadas:
 
 ### 1. Domain Layer
-- **Entities**: Contém as entidades do domínio (Post, Comment)
-- **Interfaces**: Define contratos para repositórios e casos de uso
+- **Entities**: Contém as entidades do domínio (Post, Comment) que representam os objetos de negócio
+- **Interfaces**: Define contratos para repositórios e casos de uso, estabelecendo as regras de comunicação entre camadas
+- **Funcionalidade**: Responsável por definir as regras de negócio e entidades do sistema, sendo independente de frameworks e tecnologias externas
 
 ### 2. Application Layer
-- **Use Cases**: Implementa a lógica de negócios
-- **DTOs**: Objetos de transferência de dados
-- **Mappers**: Configuração do AutoMapper
+- **Use Cases**: Implementa a lógica de negócios através de casos de uso específicos (GetAllPosts, CreatePost)
+- **DTOs**: Objetos de transferência de dados que isolam a camada de domínio da apresentação
+- **Mappers**: Configuração do AutoMapper para conversão entre entidades e DTOs
+- **Funcionalidade**: Orquestra as operações do sistema, aplicando regras de negócio e coordenando o fluxo de dados
 
 ### 3. Infrastructure Layer
-- **Repositories**: Implementações concretas dos repositórios
-- **Services**: Serviços externos (JsonPlaceholder API)
-- **Persistence**: Configuração do Entity Framework Core
+- **Repositories**: Implementações concretas dos repositórios que gerenciam o acesso a dados
+- **Services**: Serviços externos (JsonPlaceholder API) para integração com APIs
+- **Persistence**: Configuração do Entity Framework Core e SQLite para persistência local
+- **Funcionalidade**: Fornece implementações concretas para interfaces definidas nas camadas superiores, lidando com detalhes técnicos
 
 ### 4. Presentation Layer
-- **Views**: Interface do usuário em XAML
-- **ViewModels**: Lógica de apresentação
-- **Models**: Modelos específicos da UI
+- **Views**: Interface do usuário em XAML com layouts responsivos
+- **ViewModels**: Lógica de apresentação que gerencia o estado da UI e comandos
+- **Models**: Modelos específicos da UI para binding de dados
+- **Funcionalidade**: Responsável pela interface com o usuário, implementando o padrão MVVM para separação de responsabilidades
 
 ## 📱 Funcionalidades
 
@@ -70,12 +74,39 @@ Alguns dos padrões utilizados:
 
 ```
 SiggaBlog/
-├── SiggaBlog.Domain/           # Camada de domínio
-├── SiggaBlog.Application/      # Camada de aplicação
-├── SiggaBlog.Infrastructure/   # Camada de infraestrutura
-├── SiggaBlog/                  # Camada de apresentação
-└── SiggaBlog.Tests/            # Testes
+├── SiggaBlog.Domain/                    # Camada de domínio
+│   ├── Entities/
+│   │   └── Post.cs                      # Entidade principal do domínio
+│   └── Interfaces/
+│       └── IPostRepository.cs           # Contrato do repositório
+│
+├── SiggaBlog.Application/               # Camada de aplicação
+│   ├── UseCases/
+│   │   └── Posts/
+│   │       └── GetAllPostsUseCase.cs    # Caso de uso para listar posts
+│   └── DTOs/
+│       └── PostDTO.cs                   # Objeto de transferência
+│
+├── SiggaBlog.Infrastructure/            # Camada de infraestrutura
+│   ├── Repositories/
+│   │   └── PostRepository.cs            # Implementação do repositório
+│   └── Services/
+│       └── JsonPlaceholderService.cs    # Serviço de API
+│
+├── SiggaBlog/                           # Camada de apresentação
+│   ├── Views/
+│   │   └── MainPage.xaml               # Tela principal
+│   └── ViewModels/
+│       └── MainPageViewModel.cs        # ViewModel principal
+│
+└── SiggaBlog.Tests/                     # Testes
+    ├── Application/
+    │   └── UseCases/
+    │       └── GetAllPostsUseCaseTests.cs  # Testes unitários
+    └── Integration/
+        └── PostRepositoryTests.cs          # Testes de integração
 ```
+
 ## 🧪 Testes
 
 O projeto inclui testes unitários e de integração:
