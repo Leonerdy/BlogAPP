@@ -41,7 +41,7 @@ O projeto segue a Clean Architecture e é dividido em camadas:
 - **Models**: Modelos específicos da UI para binding de dados
 - **Funcionalidade**: Responsável pela interface com o usuário, implementando o padrão MVVM para separação de responsabilidades
 
-## 📱 Funcionalidades
+## 📱 Funcionalidades da aplicação
 
 - Listagem de posts
 - Detalhe do post com respectivos comentários
@@ -152,9 +152,12 @@ dotnet restore
 ```bash
 dotnet build
 ```
-## 👥 Autores
+## 👥 Contato
 
- -Anselmo Leonardo Teixeira da silva(https://github.com/Leonaerdy) email:Enge.leon@gmail.com
+Se tiver alguma dúvida ou quiser tratar de oportunidades de emprego sinta-se livre para contactar-me.
+
+Anselmo Leonardo Teixeira da silva 
+Enge.leon@gmail.com
 
 
 - [JsonPlaceholder](https://jsonplaceholder.typicode.com/) - API de exemplo
