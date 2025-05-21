@@ -13,7 +13,7 @@ namespace SiggaBlog.InfraStructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services.AddHttpClient();
-            services.AddScoped<JsonPlaceholderService>();
+            services.AddScoped<IJsonPlaceholderService, JsonPlaceholderService>();
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
 

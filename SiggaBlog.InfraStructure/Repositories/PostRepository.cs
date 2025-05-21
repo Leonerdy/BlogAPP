@@ -8,12 +8,12 @@ namespace SiggaBlog.InfraStructure.Repositories
 {
     public class PostRepository : IPostRepository
     {
-        private readonly JsonPlaceholderService _jsonPlaceholderService;
+        private readonly IJsonPlaceholderService _jsonPlaceholderService;
         private readonly SiggaBlogDbContext _dbContext;
         private readonly INetworkStatus _networkStatus;
 
         public PostRepository(
-            JsonPlaceholderService jsonPlaceholderService,
+            IJsonPlaceholderService jsonPlaceholderService,
             SiggaBlogDbContext dbContext,
             INetworkStatus networkStatus)
         {
@@ -43,11 +43,11 @@ namespace SiggaBlog.InfraStructure.Repositories
         {
             try
             {
-                return await _jsonPlaceholderService.GetAllAsync<Post>("posts");
+                return await _jsonPlaceholderService.GetAllPostsAsync();
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error fetching remote posts: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Erro buscando posts: {ex.Message}");
                 return Enumerable.Empty<Post>();
             }
         }
@@ -78,11 +78,35 @@ namespace SiggaBlog.InfraStructure.Repositories
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error updating local database: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Erro atualizando o banco de dados: {ex.Message}");
                 if (ex.InnerException != null)
                 {
                     System.Diagnostics.Debug.WriteLine($"Inner exception: {ex.InnerException.Message}");
                 }
+            }
+        }
+
+        public async Task<Post> CreatePostAsync(Post post)
+        {
+            if (!_networkStatus.HasInternetConnection())
+            {
+                throw new InvalidOperationException("Não é possível criar um post sem conexão com a internet");
+            }
+
+            try
+            {
+                var createdPost = await _jsonPlaceholderService.CreatePostAsync(post);
+                if (createdPost != null)
+                {
+                    await _dbContext.Posts.AddAsync(createdPost);
+                    await _dbContext.SaveChangesAsync();
+                }
+                return createdPost;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erro criando Post: {ex.Message}");
+                throw;
             }
         }
     }

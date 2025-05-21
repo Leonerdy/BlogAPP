@@ -11,6 +11,7 @@ using System.Reflection;
 using SiggaBlog.InfraStructure.Persistence;
 using CommunityToolkit.Maui;
 using SiggaBlog.Application.UseCases.Comments;
+using SiggaBlog.Application;
 
 namespace SiggaBlog;
 
@@ -46,6 +47,7 @@ public static class MauiProgram
             .Options;
 
         builder.Services.AddInfrastructure(options);
+		builder.Services.AddApplication();
 
 		builder.Services.AddScoped<IGetAllPostsUseCase, GetAllPostsUseCase>();
 		builder.Services.AddScoped<IGetCommentsByPostIdUseCase, GetCommentsByPostIdUseCase>();

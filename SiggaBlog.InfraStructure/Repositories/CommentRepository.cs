@@ -8,12 +8,12 @@ namespace SiggaBlog.InfraStructure.Repositories
 {
     public class CommentRepository : ICommentRepository
     {
-        private readonly JsonPlaceholderService _jsonPlaceholderService;
+        private readonly IJsonPlaceholderService _jsonPlaceholderService;
         private readonly SiggaBlogDbContext _dbContext;
         private readonly INetworkStatus _networkStatus;
 
         public CommentRepository(
-            JsonPlaceholderService jsonPlaceholderService,
+            IJsonPlaceholderService jsonPlaceholderService,
             SiggaBlogDbContext dbContext,
             INetworkStatus networkStatus)
         {
@@ -43,11 +43,11 @@ namespace SiggaBlog.InfraStructure.Repositories
         {
             try
             {
-                return await _jsonPlaceholderService.GetAllAsync<Comment>($"posts/{postId}/comments");
+                return await _jsonPlaceholderService.GetCommentsByPostIdAsync(postId);
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error fetching remote comments: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Erro buscando comentários: {ex.Message}");
                 return Enumerable.Empty<Comment>();
             }
         }
@@ -55,8 +55,8 @@ namespace SiggaBlog.InfraStructure.Repositories
         private async Task<IEnumerable<Comment>> GetLocalCommentsAsync(int postId)
         {
             return await _dbContext.Comments
-                .AsNoTracking()
                 .Where(c => c.PostId == postId)
+                .AsNoTracking()
                 .ToListAsync();
         }
 
@@ -79,12 +79,13 @@ namespace SiggaBlog.InfraStructure.Repositories
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error updating local database: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Erro atualizando o banco de dados: {ex.Message}");
                 if (ex.InnerException != null)
                 {
                     System.Diagnostics.Debug.WriteLine($"Inner exception: {ex.InnerException.Message}");
                 }
             }
         }
+                
     }
 } 
