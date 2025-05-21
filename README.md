@@ -36,9 +36,8 @@ O projeto segue a Clean Architecture e é dividido em camadas:
 - **Funcionalidade**: Fornece implementações concretas para interfaces definidas nas camadas superiores, lidando com detalhes técnicos
 
 ### 4. Presentation Layer
-- **Views**: Interface do usuário em XAML com layouts responsivos
-- **ViewModels**: Lógica de apresentação que gerencia o estado da UI e comandos
-- **Models**: Modelos específicos da UI para binding de dados
+- **Views**: Interface do usuário em XAML
+- **ViewModels**: Lógica de apresentação que gerencia o estado da UI
 - **Funcionalidade**: Responsável pela interface com o usuário, implementando o padrão MVVM para separação de responsabilidades
 
 ## 📱 Funcionalidades da aplicação
@@ -47,7 +46,6 @@ O projeto segue a Clean Architecture e é dividido em camadas:
 - Detalhe do post com respectivos comentários
 - Criação de novos posts
 - Suporte offline
-- Sincronização automática
 
 ## 🔄 Fluxo de Dados
 
@@ -59,7 +57,7 @@ O projeto segue a Clean Architecture e é dividido em camadas:
 2. **Offline**:
    - Dados são recuperados do banco local
    - Interface adaptada para modo offline
-   - Sincronização quando online
+
 
 ## 🛠️ Padrões de Projeto
 Alguns dos padrões utilizados:
@@ -83,9 +81,9 @@ SiggaBlog/
 ├── SiggaBlog.Application/               # Camada de aplicação
 │   ├── UseCases/
 │   │   └── Posts/
-│   │       └── GetAllPostsUseCase.cs    # Caso de uso para listar posts
-│   └── DTOs/
-│       └── PostDTO.cs                   # Objeto de transferência
+│   │   |   └── GetAllPostsUseCase.cs    # Caso de uso para listar posts
+│       |___CreatePost/    
+│           |__ CreatePostResponse       # Objeto de transferência
 │
 ├── SiggaBlog.Infrastructure/            # Camada de infraestrutura
 │   ├── Repositories/
@@ -113,7 +111,6 @@ O projeto inclui testes unitários e de integração:
 
 ### Testes Unitários
 - Testes de casos de uso
-- Testes de repositórios
 - Testes de serviços
 
 ### Testes de Integração
