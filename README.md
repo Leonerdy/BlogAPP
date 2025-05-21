@@ -1,6 +1,6 @@
 # SiggaBlog
 
-SiggaBlog é um aplicativo móvel multi-camâdas desenvolvido em .NET MAUI que permite aos usuários visualizar e criar posts consumindo os dados de um webservice e armazenando-os em um banco de dados Sqlite local, implementando uma arquitetura limpa, testes e seguindo os princípios SOLID.
+SiggaBlog é um aplicativo móvel multicamadas desenvolvido em .NET MAUI, que permite aos usuários visualizar e criar posts, consumindo dados de um webservice e armazenando-os em um banco de dados SQLite local. O aplicativo implementa uma arquitetura limpa, testes automatizados e segue os princípios SOLID.
 
 ## 🚀 Tecnologias
 
