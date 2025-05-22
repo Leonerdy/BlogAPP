@@ -98,6 +98,14 @@ namespace SiggaBlog.InfraStructure.Repositories
                 var createdPost = await _jsonPlaceholderService.CreatePostAsync(post);
                 if (createdPost != null)
                 {
+                    // Verifica se já existe um post com ID 101
+                    var existingPost = await _dbContext.Posts.FirstOrDefaultAsync(p => p.Id == 101);
+                    if (existingPost != null)
+                    {
+                        _dbContext.Posts.Remove(existingPost);
+                        await _dbContext.SaveChangesAsync();
+                    }
+
                     await _dbContext.Posts.AddAsync(createdPost);
                     await _dbContext.SaveChangesAsync();
                 }
