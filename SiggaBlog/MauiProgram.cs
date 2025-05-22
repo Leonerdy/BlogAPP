@@ -49,10 +49,10 @@ public static class MauiProgram
         builder.Services.AddInfrastructure(options);
 		builder.Services.AddApplication();
 
-		builder.Services.AddScoped<IGetAllPostsUseCase, GetAllPostsUseCase>();
-		builder.Services.AddScoped<IGetCommentsByPostIdUseCase, GetCommentsByPostIdUseCase>();
-		builder.Services.AddScoped<MainPageViewModel>();
-		builder.Services.AddScoped<PostDetailViewModel>();
+		builder.Services.AddTransient<IGetAllPostsUseCase, GetAllPostsUseCase>();
+		builder.Services.AddTransient<IGetCommentsByPostIdUseCase, GetCommentsByPostIdUseCase>();
+		builder.Services.AddTransient<MainPageViewModel>();
+		builder.Services.AddTransient<PostDetailViewModel>();
 		builder.Services.AddTransient<MainPage>();
 		builder.Services.AddTransient<PostDetailPage>();
 		builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);
